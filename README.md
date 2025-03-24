@@ -1,109 +1,156 @@
 # Diabetes Risk & Insights Dashboard
 
-This Power BI project analyzes health data to uncover insights into diabetes risk factors and health outcomes. Built to simulate a professional, user-facing dashboard, this project takes a comprehensive and stakeholder-friendly approach to visual storytelling, with intuitive navigation across key focus areas.
+This project simulates a real-world health sector initiative aimed at understanding diabetes prevalence, risk factors, and management patterns. The goal is to derive actionable insights that can inform public health strategies and interventions.
 
-The dashboard mimics a multi-page website experience, covering:
-
-- **Overview** — Key diabetic statistics and average medical indicators
-- **Risk Factors** — Visual breakdown of physical and hereditary risk contributors
-- **Lifestyle** — How diet, age, and medication use relate to diabetes
-- **Risk Predictor** — A dynamic calculator that outputs a diabetes risk score based on selected health inputs
-
-The goal is to help stakeholders (e.g., clinicians, healthcare analysts, policy advisors) understand contributing factors and identify high-risk profiles.
+> **Stakeholder perspective:** This report is designed for health agencies or organizations working with diabetic populations to understand prevalence trends, lifestyle risks, and clinical factors influencing diabetes outcomes.
 
 ---
 
-# Project Background
+## 📊 Dashboard Overview
 
-You're a data analyst working for a health analytics organization supporting preventive care initiatives. Your team is tasked with delivering clear insights into diabetes risk indicators, patterns across population groups, and tools to help inform early interventions.
+The Power BI dashboard is structured into four key pages:
 
-The data used is anonymized health survey data, which includes medical metrics (e.g., glucose, blood pressure, BMI), lifestyle indicators (e.g., diet type), and diabetic outcomes. 
+### 1. **Overview**
+- High-level KPIs and average medical indicators.
+- Diabetes prevalence rate (34.4%) in the dataset.
+- Summary cards include:
+  - BMI, Blood Pressure, Glucose, HbA1c, LDL, Triglycerides, HDL, WHR, and Family History prevalence.
+- Key visual: % of diabetics across age groups.
+- Summary of key insights and observations.
 
-Your stakeholders want to know:
+### 2. **Risk Factors**
+- Compares diabetics vs. non-diabetics on key medical variables:
+  - BMI distribution
+  - Blood pressure distribution
+  - WHR risk category
+  - Family history breakdown
+- Clear visual trends identifying groups with increased diabetic likelihood.
 
-- What key health and lifestyle traits are most strongly linked to diabetes?
-- Can you visually segment risk by age, family history, or obesity?
-- How can we create a tool to estimate individual diabetes risk?
-- What preventive actions are most actionable across groups?
+### 3. **Lifestyle**
+- Diet type vs. diabetes rate.
+- HbA1c trend by age and diabetes outcome.
+- Medication use among diabetics (55% on medication).
+- Demonstrates how lifestyle and treatment factors influence diabetic outcomes.
 
-This dashboard answers those questions in an intuitive and engaging way.
-
----
-
-# Data Structure & Initial Checks
-
-The dataset used is a cleaned version of a diabetes health survey. It includes the following fields:
-
-- **Medical Metrics**: BloodPressure, Glucose, BMI, Triglycerides, HbA1c, WHR (Waist-to-Hip Ratio), HDL, LDL
-- **Lifestyle Inputs**: Diet type, Medication use, Family history, Hypertension
-- **Demographic**: Age group
-- **Outcome**: Binary diabetic/non-diabetic label
-
-Extensive DAX measures were written for:
-- Categorizing WHR risk
-- Generating risk score outputs
-- Creating diabetes rate percentages by subgroups
-- Calculating medical indicator averages
-
-[Power BI Report Link Here]
-
----
-
-# Executive Summary
-
-### Overview of Findings
-
-- **Diabetes prevalence** in the dataset is 34.4%
-- **Age and BMI** show strong correlation with diabetic outcomes
-- Individuals with **unbalanced diets** and **family history** are significantly more likely to be diabetic
-- Over **55% of diabetics are on medication**, yet glycemic markers like HbA1c remain elevated in older adults
-- A custom-built **risk score model** allows users to simulate risk levels based on 6 key health inputs
-
-### Recommendation Themes
-
-- Flag at-risk individuals using WHR, blood pressure, and glucose ranges
-- Promote balanced dietary habits to reduce incidence in younger age groups
-- Use the dynamic risk calculator to personalize prevention strategies
+### 4. **Risk Predictor**
+- An interactive risk score calculator.
+- Inputs: Blood Pressure, Glucose, Age, BMI, Family History, and Hypertension.
+- Custom DAX formula to calculate a composite score scaled from 0–100:
+  - **Low risk:** < 29
+  - **Moderate risk:** 30–59
+  - **High risk:** ≥ 60
+- Explanatory text beneath each input describes healthy ranges and clinical significance.
 
 ---
 
-# Insights Deep Dive
+## 🛠️ Tools Used
 
-### Risk Factors
-- Visualizations show diabetics consistently have **higher BMI and blood pressure** levels
-- A large percentage of diabetics fall into **high WHR categories**, suggesting visceral fat is a strong indicator
-- **Family history** plays a significant role, with nearly 88% of diabetics reporting it
-
-### Lifestyle
-- **Unbalanced diets** are linked to a 61.8% diabetes rate
-- **HbA1c levels** among diabetics are elevated across all age groups, especially seniors
-- Over **55% of diabetics use medication**, yet outcome markers remain suboptimal
-
-### Risk Predictor
-- Users input 6 variables (Age, BMI, BP, Glucose, Family History, Hypertension)
-- A weighted DAX-based model scores risk from 0–100:
-  - Low Risk: <29
-  - Moderate Risk: 30–59
-  - High Risk: 60+
-- Weights and cutoffs are based on clinical standards and tested thresholds
+| Tool       | Purpose                            |
+|------------|-------------------------------------|
+| SQL        | Data cleaning, transformation, categorization |
+| Power BI   | Data modeling, DAX measures, report design |
 
 ---
 
-# Recommendations
+## 🧼 Data Cleaning & Preparation (SQL)
 
-- Prioritize prevention in **older adults**, especially those with high glucose/BMI and family history
-- Use risk scores in **clinical decision-making** to direct resources efficiently
-- Encourage public health initiatives around **diet education and screening**
-- Refine the risk predictor by incorporating gender and physical activity when data is available
+All cleaning and structuring was performed in SQL and loaded into Power BI as a clean table.
+
+Key SQL transformations included:
+- Removed rows with invalid or null values (e.g. 0s in BMI, blood pressure, glucose).
+- Created binning columns for BMI, Glucose, Blood Pressure (systolic), and Triglycerides.
+- Encoded variables with readable labels (e.g. `"Yes"` / `"No"` for family history and hypertension).
+- Added flags such as:
+  - `Diabetes_Rate_By_AgeGroup`
+  - `% Diabetics With/Without Family History`
+  - `%GT Count of Outcome` by risk group
+
+SQL was also used to aggregate relevant KPIs used in the "Overview" page, including:
+- Diabetes rate by group
+- Median indicators by outcome (HbA1c, Triglycerides, LDL, etc.)
 
 ---
 
-# Assumptions & Caveats
+## 🧮 Key DAX Measures
 
-- The data is **synthetic or anonymized**, limiting demographic precision
-- Gender and physical activity data were **not available**, limiting model completeness
-- The risk predictor is not a diagnostic tool, but a **relative indicator of risk**
-- External validation would improve confidence in generalizability
+Power BI DAX was used to implement:
+
+### ➤ Risk Score Calculation
+
+```DAX
+Risk_Score_2 = 
+VAR AgeRisk = SWITCH(TRUE(), Age >= 55, 1, Age >= 35, 0.5, 0)
+VAR BMIRisk = SWITCH(TRUE(), BMI >= 32, 1, BMI >= 27, 0.5, 0)
+VAR GlucoseRisk = SWITCH(TRUE(), Glucose >= 126, 1, Glucose >= 100, 0.5, 0)
+VAR BPRisk = SWITCH(TRUE(), BP >= 135, 1, BP >= 120, 0.5, 0)
+VAR FamilyHistoryRisk = IF(FamilyHistory = 1, 1, 0)
+VAR HypertensionRisk = IF(Hypertension = 1, 1, 0)
+
+RETURN ROUND(
+    (AgeRisk * 1 + BMIRisk * 1.1 + GlucoseRisk * 1.3 + BPRisk * 1.1 + FamilyHistoryRisk * 1.2 + HypertensionRisk * 1) * 15,
+1)
+```
+
+- Scaled to 0–100 range to improve visual granularity and user understanding.
+- Categories defined as:
+  - Low risk: < 29
+  - Moderate risk: 30–59
+  - High risk: ≥ 60
+
+### ➤ % Calculations
+
+Example:
+```DAX
+% Diabetics With Family History = 
+VAR TotalDiabetics = CALCULATE(COUNTROWS(data), data[Outcome_Label] = "Yes")
+VAR WithHistory = CALCULATE(COUNTROWS(data), data[Outcome_Label] = "Yes", data[FamilyHistory_Label] = "Yes")
+RETURN DIVIDE(WithHistory, TotalDiabetics, 0)
+```
+
+Similar logic used for:
+- `% Diabetics With Medication Use`
+- `% Diabetics With WHR High Risk`
+- `% Diabetics With Unbalanced Diets`
 
 ---
 
+## 🔍 Business Questions Answered
+
+| Question                                                  | Output / Insight                                        |
+|-----------------------------------------------------------|----------------------------------------------------------|
+| What percentage of the population is diabetic?            | 34.4% overall                                            |
+| Do family history or hypertension increase risk?          | Yes, both are strong indicators of diabetes              |
+| What lifestyle choices correlate with diabetes?           | Unbalanced diet shows highest diabetes rates             |
+| Does age affect HbA1c or diabetes likelihood?             | Yes, older groups have higher HbA1c and prevalence       |
+| How many diabetics are on medication?                     | Over 55%                                                 |
+| Can we predict diabetes risk from user-entered inputs?    | Yes, via a custom-built DAX-powered calculator           |
+
+---
+
+## 📁 Folder Structure
+
+```
+📁 Diabetes Risk Dashboard
+├── 📄 README.md
+├── 📄 Data_Cleaning.sql
+├── 📄 Business_Queries.sql
+├── 📄 Diabetes_Dashboard.pbix
+└── 📄 Screenshots/
+```
+
+---
+
+## 📌 Key Learnings
+
+- Built a business-ready dashboard simulating public health analysis.
+- Practiced SQL data cleaning, Power BI modeling, and DAX measures.
+- Developed a logical risk prediction calculator using medical logic and weighting.
+- Balanced stakeholder communication (overview summaries) with data integrity.
+
+---
+
+## ✅ Next Steps
+
+- Add gender-based segmentation if gender field becomes available.
+- Explore time-based trends if longitudinal data is added.
+- Compare results with real-world diabetic population benchmarks for further tuning.
