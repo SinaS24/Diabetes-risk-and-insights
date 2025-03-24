@@ -1,18 +1,15 @@
 # Diabetes Risk & Insights Dashboard
 
-This project simulates a real-world health sector initiative aimed at understanding diabetes prevalence, risk factors, and management patterns. The goal is to derive actionable insights that can inform public health strategies and interventions.
-
-> **Stakeholder perspective:** This report is designed for health agencies or organizations working with diabetic populations to understand prevalence trends, lifestyle risks, and clinical factors influencing diabetes outcomes.
+This initiative is aimed at understanding diabetes prevalence, risk factors, and lifestyle patterns. This report is designed for the general public and health agencies or organisations working with diabetic populations to understand prevalence trends, lifestyle risks, and clinical factors influencing diabetes outcomes. A risk score predictor is provided to udnerstand what your risks are. 
 
 ---
 
-## 📊 Dashboard Overview
+## Dashboard Overview
 
 The Power BI dashboard is structured into four key pages:
 
 ### 1. **Overview**
 - High-level KPIs and average medical indicators.
-- Diabetes prevalence rate (34.4%) in the dataset.
 - Summary cards include:
   - BMI, Blood Pressure, Glucose, HbA1c, LDL, Triglycerides, HDL, WHR, and Family History prevalence.
 - Key visual: % of diabetics across age groups.
@@ -24,7 +21,7 @@ The Power BI dashboard is structured into four key pages:
   - Blood pressure distribution
   - WHR risk category
   - Family history breakdown
-- Clear visual trends identifying groups with increased diabetic likelihood.
+- Trends identifying groups with increased diabetic likelihood.
 
 ### 3. **Lifestyle**
 - Diet type vs. diabetes rate.
@@ -39,39 +36,35 @@ The Power BI dashboard is structured into four key pages:
   - **Low risk:** < 29
   - **Moderate risk:** 30–59
   - **High risk:** ≥ 60
-- Explanatory text beneath each input describes healthy ranges and clinical significance.
 
 ---
 
-## 🛠️ Tools Used
+## Tools Used
 
 | Tool       | Purpose                            |
 |------------|-------------------------------------|
-| SQL        | Data cleaning, transformation, categorization |
-| Power BI   | Data modeling, DAX measures, report design |
+| SQL        | Data cleaning, transformation, categorisation |
+| Power BI   | Data modelling, DAX measures, report design |
 
 ---
 
-## 🧼 Data Cleaning & Preparation (SQL)
+## Data Inspection, Cleaning and Preparation (SQL)
 
-All cleaning and structuring was performed in SQL and loaded into Power BI as a clean table.
+Data inspections, cleaning and structuring was performed in SQL and loaded into Power BI as a clean table.
 
-Key SQL transformations included:
-- Removed rows with invalid or null values (e.g. 0s in BMI, blood pressure, glucose).
-- Created binning columns for BMI, Glucose, Blood Pressure (systolic), and Triglycerides.
-- Encoded variables with readable labels (e.g. `"Yes"` / `"No"` for family history and hypertension).
-- Added flags such as:
-  - `Diabetes_Rate_By_AgeGroup`
-  - `% Diabetics With/Without Family History`
-  - `%GT Count of Outcome` by risk group
+Key SQL queries included:
+- Data inspection, including: rows, distributions, data types, outliers and missing values. 
+- Removed pregnancy column due to unusal numbers.
+- Created new column to group by Age.
+- Updated boolean columns' data types to BIT (Family History, Medication Use, Hypertension and Outcome)
 
-SQL was also used to aggregate relevant KPIs used in the "Overview" page, including:
-- Diabetes rate by group
-- Median indicators by outcome (HbA1c, Triglycerides, LDL, etc.)
+PowerBI:
+- Encoded variables with readable labels such as Yes / No for family history and hypertension, balanced, unbalanced, and vegetarian/vegaan for diet type.
+- Transformed column data types.
 
 ---
 
-## 🧮 Key DAX Measures
+## Key DAX Measures
 
 Power BI DAX was used to implement:
 
