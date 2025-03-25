@@ -1,6 +1,6 @@
 # Diabetes Risk & Insights Dashboard
 
-This initiative is aimed at understanding diabetes prevalence, risk factors, and lifestyle patterns. This report is designed for the general public and health agencies or organisations working with diabetic populations to understand prevalence trends, lifestyle risks, and clinical factors influencing diabetes outcomes. A risk score predictor is provided to udnerstand what your risks are. 
+This initiative is aimed at understanding diabetes prevalence, risk factors, and lifestyle patterns. This report is designed for the general public and health agencies or organisations working with diabetic populations to understand prevalence trends, lifestyle risks, and clinical factors influencing diabetes outcomes. A risk score predictor is provided to udnerstand whether you are at risk or not (Disclaimer: Risk score predictor accuracy not officially verified).
 
 ---
 
