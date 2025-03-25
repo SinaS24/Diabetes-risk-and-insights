@@ -122,16 +122,3 @@ Similar logic used for:
 | What lifestyle choices correlate with diabetes?           | Unbalanced diet shows highest diabetes rates             |
 | Does age affect HbA1c or diabetes likelihood?             | Yes, older groups have higher HbA1c and prevalence       |
 | How many diabetics are on medication?                     | Over 55%                                                 
-
----
-
-## 📁 Folder Structure
-
-```
-📁 Diabetes Risk Dashboard
-├── 📄 README.md
-├── 📄 Data_Cleaning.sql
-├── 📄 Business_Queries.sql
-├── 📄 Diabetes_Dashboard.pbix
-└── 📄 Screenshots/
-```
