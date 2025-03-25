@@ -66,9 +66,11 @@ PowerBI:
 
 ## Key DAX Measures
 
-Power BI DAX was used to implement:
+DAX measures were used to implement:
 
 ### ➤ Risk Score Calculation
+
+Used a weighted model based on data and additional research. 
 
 ```DAX
 Risk_Score_2 = 
@@ -101,13 +103,17 @@ RETURN DIVIDE(WithHistory, TotalDiabetics, 0)
 ```
 
 Similar logic used for:
-- `% Diabetics With Medication Use`
-- `% Diabetics With WHR High Risk`
-- `% Diabetics With Unbalanced Diets`
+- `% Diabetics with medication use`
+- `% Diabetics with WHR high risk`
+- `% Diabetics with unbalanced diets`
+- `% Diabetics with High glucose`
+- `% Diabetics that are obese`
+- `% Diabetics by BP`
+- `% Diabetics by BMI`
 
 ---
 
-## 🔍 Business Questions Answered
+## Questions Answered
 
 | Question                                                  | Output / Insight                                        |
 |-----------------------------------------------------------|----------------------------------------------------------|
@@ -115,8 +121,7 @@ Similar logic used for:
 | Do family history or hypertension increase risk?          | Yes, both are strong indicators of diabetes              |
 | What lifestyle choices correlate with diabetes?           | Unbalanced diet shows highest diabetes rates             |
 | Does age affect HbA1c or diabetes likelihood?             | Yes, older groups have higher HbA1c and prevalence       |
-| How many diabetics are on medication?                     | Over 55%                                                 |
-| Can we predict diabetes risk from user-entered inputs?    | Yes, via a custom-built DAX-powered calculator           |
+| How many diabetics are on medication?                     | Over 55%                                                 
 
 ---
 
@@ -130,20 +135,3 @@ Similar logic used for:
 ├── 📄 Diabetes_Dashboard.pbix
 └── 📄 Screenshots/
 ```
-
----
-
-## 📌 Key Learnings
-
-- Built a business-ready dashboard simulating public health analysis.
-- Practiced SQL data cleaning, Power BI modeling, and DAX measures.
-- Developed a logical risk prediction calculator using medical logic and weighting.
-- Balanced stakeholder communication (overview summaries) with data integrity.
-
----
-
-## ✅ Next Steps
-
-- Add gender-based segmentation if gender field becomes available.
-- Explore time-based trends if longitudinal data is added.
-- Compare results with real-world diabetic population benchmarks for further tuning.
