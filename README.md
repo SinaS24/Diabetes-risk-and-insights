@@ -2,6 +2,11 @@
 
 This initiative is aimed at understanding diabetes prevalence, risk factors, and lifestyle patterns. This report is designed for the general public and health agencies or organisations working with diabetic populations to understand prevalence trends, lifestyle risks, and clinical factors influencing diabetes outcomes. A risk score predictor is provided to udnerstand whether you are at risk or not (Disclaimer: Risk score predictor accuracy not officially verified).
 
+### SQL & Dashboard Links
+
+- The **SQL queries** used to inspect, clean and transform the data for this analysis can be found **[here](https://github.com/SinaS24/Diabetes-risk-and-insights/tree/2a7dfc52ca336bbe76504e7b81d50e9379817619/SQL)**.  
+- An **interactive Power BI dashboard** used for this report can be found **[here](https://app.powerbi.com/groups/me/reports/b567541e-a134-4cea-a464-d4fe5cffbade/d2dde74a1c093e970564?experience=power-bi)**.  
+
 ---
 
 ## Dashboard Overview
@@ -145,3 +150,17 @@ Similar logic used for:
 | What lifestyle choices correlate with diabetes?           | Unbalanced diet shows highest diabetes rates             |
 | Does age affect HbA1c or diabetes likelihood?             | Yes, older groups have higher HbA1c and prevalence       |
 | How many diabetics are on medication?                     | Over 55%                                                 
+
+---
+
+## Caveats and Considerations
+
+While this dashboard provides meaningful insights, the following limitations should be considered:
+- Sample Size: The dataset comprises a relatively small sample which may not fully capture broader population trends.
+- Geographic Unknowns: The geographic origin of the dataset is unspecified. Regional factors (e.g., diet, healthcare access, genetics) may influence results and limit generalisability.
+- Data Quality & Accuracy: The data may contain self-reported or clinically estimated values. No information on data collection methodology is provided, which could affect reliability.
+- Lack of Gender Differentiation: The dataset lacks a gender variable, limiting analysis for metrics where clinical benchmarks differ (e.g., WHR).
+- Limited Lifestyle Factors: The dataset excludes important lifestyle variables such as physical activity, sleep patterns, alcohol use, or smoking status, which are known contributors to diabetes risk.
+- Simplified Risk Scoring: The Diabetes Risk Predictor uses a custom scoring algorithm for illustrative purposes only. It does not represent a clinically validated tool.
+
+Please note that this dashboard is intended for educational and analytical demonstration only and should not be used to inform clinical or policy decisions without further validation.
